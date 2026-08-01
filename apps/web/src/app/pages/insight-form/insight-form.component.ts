@@ -12,61 +12,61 @@ import { Insight, Category } from '../../models/insight.interface';
     <div class="max-w-3xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <a routerLink="/dashboard" class="text-surface-400 hover:text-white text-sm transition flex items-center gap-1 mb-4">
+        <a routerLink="/dashboard" class="text-secondary-400 hover:text-ink text-sm transition flex items-center gap-1 mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Back to Dashboard
         </a>
-        <h1 class="text-2xl font-bold text-white">{{ isEditMode() ? 'Edit Insight' : 'New Insight' }}</h1>
-        <p class="text-surface-400 text-sm mt-1">{{ isEditMode() ? 'Update your insight' : 'Capture a new insight' }}</p>
+        <h1 class="text-2xl font-bold text-ink">{{ isEditMode() ? 'Edit Insight' : 'New Insight' }}</h1>
+        <p class="text-secondary-400 text-sm mt-1">{{ isEditMode() ? 'Update your insight' : 'Capture a new insight' }}</p>
       </div>
 
       <!-- Error -->
       @if (errorMessage(); as msg) {
-        <div class="bg-red-900/30 border border-red-800 text-red-300 px-4 py-3 rounded-lg mb-6 text-sm">
+        <div class="bg-red-900/30 border border-red-800 text-red-300 px-4 py-3 rounded-md mb-6 text-sm">
           {{ msg }}
         </div>
       }
 
       <!-- Form -->
-      <form (ngSubmit)="onSubmit()" class="bg-surface-900 border border-surface-800 rounded-xl p-8 space-y-6">
+      <form (ngSubmit)="onSubmit()" class="bg-secondary-900 border border-secondary-800 rounded-md p-8 space-y-6">
         <!-- Title -->
         <div>
-          <label for="title" class="block text-sm font-medium text-surface-300 mb-1">Title</label>
+          <label for="title" class="block text-sm font-medium text-secondary-300 mb-1">Title</label>
           <input
             id="title"
             type="text"
             [(ngModel)]="title"
             name="title"
             required
-            class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+            class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
             placeholder="What's on your mind?"
           />
         </div>
 
         <!-- Content -->
         <div>
-          <label for="content" class="block text-sm font-medium text-surface-300 mb-1">Content</label>
+          <label for="content" class="block text-sm font-medium text-secondary-300 mb-1">Content</label>
           <textarea
             id="content"
             [(ngModel)]="content"
             name="content"
             rows="8"
             required
-            class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition resize-y"
+            class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition resize-y"
             placeholder="Write your insight in detail…"
           ></textarea>
         </div>
 
         <!-- Category -->
         <div>
-          <label for="category" class="block text-sm font-medium text-surface-300 mb-1">Category</label>
+          <label for="category" class="block text-sm font-medium text-secondary-300 mb-1">Category</label>
           <select
             id="category"
             [(ngModel)]="categoryId"
             name="categoryId"
-            class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+            class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
           >
             <option [ngValue]="null">No category</option>
             @for (cat of categories(); track cat.id) {
@@ -77,16 +77,16 @@ import { Insight, Category } from '../../models/insight.interface';
 
         <!-- Tags -->
         <div>
-          <label for="tags" class="block text-sm font-medium text-surface-300 mb-1">Tags</label>
+          <label for="tags" class="block text-sm font-medium text-secondary-300 mb-1">Tags</label>
           <input
             id="tags"
             type="text"
             [(ngModel)]="tags"
             name="tags"
-            class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+            class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
             placeholder="comma, separated, tags"
           />
-          <p class="text-xs text-surface-500 mt-1">Optional: comma-separated tags</p>
+          <p class="text-xs text-secondary-500 mt-1">Optional: comma-separated tags</p>
         </div>
 
         <!-- Submit -->
@@ -94,7 +94,7 @@ import { Insight, Category } from '../../models/insight.interface';
           <button
             type="submit"
             [disabled]="submitting()"
-            class="px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+            class="px-6 py-2.5 bg-primary-600 hover:bg-primary-700 text-ink font-medium rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed text-sm"
           >
             @if (submitting()) {
               <span class="inline-block animate-pulse">{{ isEditMode() ? 'Updating…' : 'Creating…' }}</span>
@@ -102,7 +102,7 @@ import { Insight, Category } from '../../models/insight.interface';
               {{ isEditMode() ? 'Update Insight' : 'Create Insight' }}
             }
           </button>
-          <a routerLink="/dashboard" class="text-surface-400 hover:text-white text-sm transition">Cancel</a>
+          <a routerLink="/dashboard" class="text-secondary-400 hover:text-ink text-sm transition">Cancel</a>
         </div>
       </form>
     </div>

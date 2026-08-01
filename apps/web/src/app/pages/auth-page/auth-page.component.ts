@@ -8,21 +8,21 @@ import { AuthService } from '../../services/auth.service';
   standalone: true,
   imports: [FormsModule],
   template: `
-    <div class="min-h-screen flex items-center justify-center bg-surface-950 px-4">
+    <div class="min-h-screen flex items-center justify-center bg-secondary-950 px-4">
       <div class="w-full max-w-md">
         <div class="text-center mb-8">
-          <h1 class="text-3xl font-bold text-white">InSight Vault</h1>
-          <p class="text-surface-400 mt-2">Sign in to your knowledge base</p>
+          <h1 class="text-3xl font-bold text-ink">InSight Vault</h1>
+          <p class="text-secondary-400 mt-2">Sign in to your knowledge base</p>
         </div>
 
-        <div class="bg-surface-900 rounded-xl border border-surface-800 p-8 shadow-2xl">
+        <div class="bg-secondary-900 rounded-md border border-secondary-800 p-8 -2xl">
           <!-- Tabs -->
-          <div class="flex mb-6 border-b border-surface-800">
+          <div class="flex mb-6 border-b border-secondary-800">
             <button
               (click)="activeTab.set('login')"
               class="flex-1 pb-3 text-sm font-medium transition-colors"
               [class.text-primary-400]="activeTab() === 'login'"
-              [class.text-surface-500]="activeTab() !== 'login'"
+              [class.text-secondary-500]="activeTab() !== 'login'"
               [class.border-b-2]="activeTab() === 'login'"
               [class.border-primary-500]="activeTab() === 'login'"
             >
@@ -32,7 +32,7 @@ import { AuthService } from '../../services/auth.service';
               (click)="activeTab.set('register')"
               class="flex-1 pb-3 text-sm font-medium transition-colors"
               [class.text-primary-400]="activeTab() === 'register'"
-              [class.text-surface-500]="activeTab() !== 'register'"
+              [class.text-secondary-500]="activeTab() !== 'register'"
               [class.border-b-2]="activeTab() === 'register'"
               [class.border-primary-500]="activeTab() === 'register'"
             >
@@ -42,7 +42,7 @@ import { AuthService } from '../../services/auth.service';
 
           <!-- Error Message -->
           @if (errorMessage(); as msg) {
-            <div class="bg-red-900/30 border border-red-800 text-red-300 px-4 py-3 rounded-lg mb-4 text-sm">
+            <div class="bg-red-900/30 border border-red-800 text-red-300 px-4 py-3 rounded-md mb-4 text-sm">
               {{ msg }}
             </div>
           }
@@ -51,33 +51,33 @@ import { AuthService } from '../../services/auth.service';
           @if (activeTab() === 'login') {
             <form (ngSubmit)="onLogin()" class="space-y-4">
               <div>
-                <label for="login-email" class="block text-sm font-medium text-surface-300 mb-1">Email</label>
+                <label for="login-email" class="block text-sm font-medium text-secondary-300 mb-1">Email</label>
                 <input
                   id="login-email"
                   type="email"
                   [(ngModel)]="email"
                   name="email"
                   required
-                  class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+                  class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                   placeholder="you@example.com"
                 />
               </div>
               <div>
-                <label for="login-password" class="block text-sm font-medium text-surface-300 mb-1">Password</label>
+                <label for="login-password" class="block text-sm font-medium text-secondary-300 mb-1">Password</label>
                 <input
                   id="login-password"
                   type="password"
                   [(ngModel)]="password"
                   name="password"
                   required
-                  class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+                  class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                   placeholder="••••••••"
                 />
               </div>
               <button
                 type="submit"
                 [disabled]="loading()"
-                class="w-full py-2.5 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                class="w-full py-2.5 px-4 bg-primary-600 hover:bg-primary-700 text-ink font-medium rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 @if (loading()) {
                   <span class="inline-block animate-pulse">Signing in…</span>
@@ -92,45 +92,45 @@ import { AuthService } from '../../services/auth.service';
           @if (activeTab() === 'register') {
             <form (ngSubmit)="onRegister()" class="space-y-4">
               <div>
-                <label for="reg-name" class="block text-sm font-medium text-surface-300 mb-1">Name</label>
+                <label for="reg-name" class="block text-sm font-medium text-secondary-300 mb-1">Name</label>
                 <input
                   id="reg-name"
                   type="text"
                   [(ngModel)]="name"
                   name="name"
                   required
-                  class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+                  class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                   placeholder="Your name"
                 />
               </div>
               <div>
-                <label for="reg-email" class="block text-sm font-medium text-surface-300 mb-1">Email</label>
+                <label for="reg-email" class="block text-sm font-medium text-secondary-300 mb-1">Email</label>
                 <input
                   id="reg-email"
                   type="email"
                   [(ngModel)]="email"
                   name="email"
                   required
-                  class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+                  class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                   placeholder="you@example.com"
                 />
               </div>
               <div>
-                <label for="reg-password" class="block text-sm font-medium text-surface-300 mb-1">Password</label>
+                <label for="reg-password" class="block text-sm font-medium text-secondary-300 mb-1">Password</label>
                 <input
                   id="reg-password"
                   type="password"
                   [(ngModel)]="password"
                   name="password"
                   required
-                  class="w-full px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+                  class="w-full px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
                   placeholder="••••••••"
                 />
               </div>
               <button
                 type="submit"
                 [disabled]="loading()"
-                class="w-full py-2.5 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                class="w-full py-2.5 px-4 bg-primary-600 hover:bg-primary-700 text-ink font-medium rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 @if (loading()) {
                   <span class="inline-block animate-pulse">Creating account…</span>

@@ -12,19 +12,19 @@ import { Category } from '../../models/insight.interface';
     <div class="max-w-4xl mx-auto">
       <!-- Header -->
       <div class="mb-8">
-        <a routerLink="/dashboard" class="text-surface-400 hover:text-white text-sm transition flex items-center gap-1 mb-4">
+        <a routerLink="/dashboard" class="text-secondary-400 hover:text-ink text-sm transition flex items-center gap-1 mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Back to Dashboard
         </a>
-        <h1 class="text-2xl font-bold text-white">Categories</h1>
-        <p class="text-surface-400 text-sm mt-1">Organize your insights with categories</p>
+        <h1 class="text-2xl font-bold text-ink">Categories</h1>
+        <p class="text-secondary-400 text-sm mt-1">Organize your insights with categories</p>
       </div>
 
       <!-- Error -->
       @if (errorMessage(); as msg) {
-        <div class="bg-red-900/30 border border-red-800 text-red-300 px-4 py-3 rounded-lg mb-6 text-sm">
+        <div class="bg-red-900/30 border border-red-800 text-red-300 px-4 py-3 rounded-md mb-6 text-sm">
           {{ msg }}
         </div>
       }
@@ -33,31 +33,31 @@ import { Category } from '../../models/insight.interface';
       @if (loading()) {
         <div class="text-center py-16">
           <div class="inline-block h-8 w-8 animate-spin rounded-full border-4 border-primary-500 border-t-transparent"></div>
-          <p class="text-surface-400 mt-4">Loading categories…</p>
+          <p class="text-secondary-400 mt-4">Loading categories…</p>
         </div>
       }
 
       <!-- Inline Create Form -->
       @if (!loading()) {
-        <div class="bg-surface-900 border border-surface-800 rounded-xl p-6 mb-8">
-          <h3 class="text-sm font-medium text-surface-300 mb-4">Create New Category</h3>
+        <div class="bg-secondary-900 border border-secondary-800 rounded-md p-6 mb-8">
+          <h3 class="text-sm font-medium text-secondary-300 mb-4">Create New Category</h3>
           <div class="flex flex-col sm:flex-row gap-3">
             <input
               type="text"
               [(ngModel)]="newName"
               placeholder="Category name"
-              class="flex-1 px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+              class="flex-1 px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
             />
             <input
               type="text"
               [(ngModel)]="newDescription"
               placeholder="Description (optional)"
-              class="flex-1 px-4 py-2.5 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
+              class="flex-1 px-4 py-2.5 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition"
             />
             <button
               (click)="onCreate()"
               [disabled]="creating() || !newName().trim()"
-              class="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed text-sm whitespace-nowrap"
+              class="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-ink font-medium rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed text-sm whitespace-nowrap"
             >
               @if (creating()) {
                 <span class="inline-block animate-pulse">Creating…</span>
@@ -72,18 +72,18 @@ import { Category } from '../../models/insight.interface';
       <!-- Category List -->
       @if (!loading() && categories().length === 0) {
         <div class="text-center py-16">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-surface-700 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-secondary-700 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
           </svg>
-          <h3 class="text-lg font-medium text-surface-300">No categories yet</h3>
-          <p class="text-surface-500 mt-1">Create your first category above.</p>
+          <h3 class="text-lg font-medium text-secondary-300">No categories yet</h3>
+          <p class="text-secondary-500 mt-1">Create your first category above.</p>
         </div>
       }
 
       @if (!loading() && categories().length > 0) {
         <div class="space-y-3">
           @for (cat of categories(); track cat.id) {
-            <div class="bg-surface-900 border border-surface-800 rounded-xl p-5 flex items-center justify-between gap-4">
+            <div class="bg-secondary-900 border border-secondary-800 rounded-md p-5 flex items-center justify-between gap-4">
               @if (editingId() === cat.id) {
                 <!-- Edit Mode -->
                 <div class="flex-1 flex flex-col sm:flex-row gap-3">
@@ -91,26 +91,26 @@ import { Category } from '../../models/insight.interface';
                     type="text"
                     [(ngModel)]="editName"
                     placeholder="Name"
-                    class="flex-1 px-3 py-2 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+                    class="flex-1 px-3 py-2 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
                   />
                   <input
                     type="text"
                     [(ngModel)]="editDescription"
                     placeholder="Description"
-                    class="flex-1 px-3 py-2 bg-surface-800 border border-surface-700 rounded-lg text-white placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+                    class="flex-1 px-3 py-2 bg-secondary-800 border border-secondary-700 rounded-md text-ink placeholder-surface-500 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
                   />
                 </div>
                 <div class="flex items-center gap-2 shrink-0">
                   <button
                     (click)="onSaveEdit(cat.id)"
                     [disabled]="savingEdit()"
-                    class="px-3 py-1.5 bg-accent-500 hover:bg-accent-600 text-white text-xs font-medium rounded-lg transition disabled:opacity-50"
+                    class="px-3 py-1.5 bg-accent-500 hover:bg-accent-600 text-ink text-xs font-medium rounded-md transition disabled:opacity-50"
                   >
                     Save
                   </button>
                   <button
                     (click)="cancelEdit()"
-                    class="px-3 py-1.5 bg-surface-800 hover:bg-surface-700 text-surface-300 text-xs rounded-lg transition"
+                    class="px-3 py-1.5 bg-secondary-800 hover:bg-secondary-700 text-secondary-300 text-xs rounded-md transition"
                   >
                     Cancel
                   </button>
@@ -118,21 +118,21 @@ import { Category } from '../../models/insight.interface';
               } @else {
                 <!-- Display Mode -->
                 <div class="flex-1 min-w-0">
-                  <h3 class="text-white font-medium">{{ cat.name }}</h3>
+                  <h3 class="text-ink font-medium">{{ cat.name }}</h3>
                   @if (cat.description) {
-                    <p class="text-surface-400 text-sm mt-0.5 truncate">{{ cat.description }}</p>
+                    <p class="text-secondary-400 text-sm mt-0.5 truncate">{{ cat.description }}</p>
                   }
                 </div>
                 <div class="flex items-center gap-2 shrink-0">
                   <button
                     (click)="startEdit(cat)"
-                    class="px-3 py-1.5 bg-surface-800 hover:bg-surface-700 text-surface-300 text-xs rounded-lg transition"
+                    class="px-3 py-1.5 bg-secondary-800 hover:bg-secondary-700 text-secondary-300 text-xs rounded-md transition"
                   >
                     Edit
                   </button>
                   <button
                     (click)="onDelete(cat.id)"
-                    class="px-3 py-1.5 bg-red-900/40 hover:bg-red-800/60 text-red-300 text-xs rounded-lg transition"
+                    class="px-3 py-1.5 bg-red-900/40 hover:bg-red-800/60 text-red-300 text-xs rounded-md transition"
                   >
                     Delete
                   </button>
