@@ -1,0 +1,16 @@
+{
+  "name": "insight-vault",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:api": "pnpm --filter ./apps/api run build",
+    "build:web": "pnpm --filter ./apps/web run build",
+    "build": "ppnpm run build:api && ppnpm run build:web",
+    "start:api": "pnpm --filter ./apps/api run start:prod",
+    "test:api": "pnpm --filter ./apps/api test"
+  },
+  "packageManager": "pnpm@10.34.5",
+  "workspaces": [
+    "apps/*"
+  ]
+}

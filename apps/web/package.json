@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "npm run build:tw && ng serve",
+    "start": "pnpm run build:tw && ng serve",
     "build:tw": "npx @tailwindcss/cli -i src/styles.css -o /tmp/tw-out.css && cp /tmp/tw-out.css src/styles.css",
-    "build": "npm run build:tw && ng build",
+    "build": "pnpm run build:tw && ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
